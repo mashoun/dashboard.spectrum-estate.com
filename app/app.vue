@@ -1,10 +1,14 @@
 <template>
   <h1>app.vue</h1>
-  <p>{{ staticStore.developer.tagline }}</p>
-  <hr>
-  {{ getName() }}
+  <!-- simple login form with logout screen -->
+  
+
+  <!-- <button @click="loginUser('', '')">Login</button>
+  <button @click="signOutUser">Logout</button> -->
+
 </template>
 <script setup lang="ts">
-import { getName } from '@/utils';
-const staticStore = useStaticStore()
+import { loginUser } from '~/utils/firebase/auth.utils';
+import { signOutUser } from '~/utils/firebase/auth.utils';
+
 </script>

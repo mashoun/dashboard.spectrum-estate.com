@@ -17,5 +17,8 @@ export default defineNuxtConfig({
         measurementId: ''
       }
     }
-  }
+  },
+  plugins: [
+    '~/plugins/firebase/auth.client.ts',
+  ],
 })
