@@ -3,7 +3,7 @@ import type { Auth } from "firebase/auth";
 
 // Importing Firebase Modules
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirebaseApp } from "~/utils/firebase";
+import { getFirebaseApp } from "~/utils/firebase/app";
 
 export default defineNuxtPlugin(() => {
   const app = getFirebaseApp();
