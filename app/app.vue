@@ -4,8 +4,8 @@
       <p>{{ authStore.user ? authStore.user.email : 'No user logged in' }}</p>
       <hr class="my-8">
       <div class="w-fit flex gap-4 my-2 flex-col">
-        <UInput v-model="email" placeholder="Enter your email" />
-        <UInput v-model="password" placeholder="Password" :type="show ? 'text' : 'password'"
+        <UInput id="email" autocomplete="email" v-model="email" placeholder="Enter your email" />
+        <UInput id="password" autocomplete="password" v-model="password" placeholder="Password" :type="show ? 'text' : 'password'"
             :ui="{ trailing: 'pe-1' }">
             <template #trailing>
               <UButton color="neutral" variant="link" size="sm" :icon="show ? 'i-lucide-eye-off' : 'i-lucide-eye'"
@@ -18,6 +18,8 @@
           <UButton class="w-fit" @click="loginUser(email, password)">Login</UButton>
         </div>
       </div>
+      <hr>
+      <UButton @click="getPublicMain()">Get Public / main {}</UButton>
     </UContainer>
   </UApp>
 
@@ -26,12 +28,16 @@
 <script setup lang="ts">
 import { loginUser } from '~/utils/firebase/auth';
 import { signOutUser } from '~/utils/firebase/auth';
+import { getPublicMain } from '~/utils/firebase/firestore';
 
 const authStore = useAuth();
+const config = useRuntimeConfig()
 
 const show = ref(false);
-const password = ref('2026#Spectrum');
-const email = ref('rodolph.spectrum@gmail.com');
+const password = ref(config.public.firebaseUser.password);
+const email = ref(config.public.firebaseUser.email);
+
+
 
 
 </script>

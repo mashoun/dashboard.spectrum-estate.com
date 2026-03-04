@@ -1,6 +1,6 @@
-import { initializeApp, getApps  } from 'firebase/app'
+import { initializeApp, getApps } from 'firebase/app'
 import type { FirebaseApp } from 'firebase/app'
-export function getFirebaseApp() {
+export function getFirebaseApp(): FirebaseApp {
     const runtimeConfig = useRuntimeConfig().public.firebaseConfig
     const firebaseConfig = {
         apiKey: runtimeConfig.apiKey,
@@ -10,5 +10,9 @@ export function getFirebaseApp() {
         appId: runtimeConfig.appId,
         measurementId: runtimeConfig.measurementId
     }
-    return getApps().length ? getApps()[0] : initializeApp(firebaseConfig) as FirebaseApp
+    const apps = getApps()
+    if (apps.length === 0) {
+        return initializeApp(firebaseConfig)
+    }
+    return apps[0] as FirebaseApp
 }

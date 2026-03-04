@@ -7,7 +7,7 @@ import { getFirebaseApp } from "~/utils/firebase/app";
 
 export default defineNuxtPlugin(() => {
   const app = getFirebaseApp();
-  const auth = getAuth(app);
+  const auth: Auth = getAuth(app);
   const authStore = useAuth();
 
   if (auth) authStore.setReady(true);
@@ -25,7 +25,7 @@ export default defineNuxtPlugin(() => {
 
   return {
     provide: {
-      firebaseAuth: auth as Auth,
+      firebaseAuth: auth,
     },
   };
 });
