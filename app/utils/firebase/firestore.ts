@@ -44,7 +44,7 @@ export async function getPublicMain() {
     }
 }
 
-export async function writePublicMain(data: Record<string, any>) {
+export async function writePublicMain(data: Record<string, any>, options?: { merge?: boolean }) {
     try {
         const staticStore = useStaticStore();
         const errorMessages = staticStore.errors.messages;
@@ -69,7 +69,7 @@ export async function writePublicMain(data: Record<string, any>) {
         }
         
         const docRef = doc($firestore, collectionName, documentName);
-        await setDoc(docRef, data);
+        await setDoc(docRef, data, { merge: options?.merge ?? true });
         return { success: true };
     } catch (error) {
         const errorMessages = useStaticStore().errors.messages;

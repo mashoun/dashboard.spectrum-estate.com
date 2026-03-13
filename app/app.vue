@@ -21,7 +21,7 @@
       <hr class="my-4">
       <div class="flex gap-4">
         <UButton @click="getPublicMain()">Get Public / main {}</UButton>
-        <UButton @click="postPublicMain()">Post Public / main { name: 'test' }</UButton>
+        <UButton @click="postPublicMain()">Post Public / main </UButton>
       </div>
     </UContainer>
   </UApp>
@@ -41,7 +41,7 @@ const password = ref(config.public.firebaseUser.password);
 const email = ref(config.public.firebaseUser.email);
 
 function postPublicMain() {
-  writePublicMain({ name: 'test' })
+  writePublicMain({ bio: 'Test bio' })
 }
 
 
