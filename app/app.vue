@@ -41,7 +41,7 @@ const password = ref(config.public.firebaseUser.password);
 const email = ref(config.public.firebaseUser.email);
 
 function postPublicMain() {
-  writePublicMain({ bio: 'Test bio' })
+  writePublicMain({ bio: 'Test bio-' + Math.random().toString(16).slice(2) })
 }
 
 
