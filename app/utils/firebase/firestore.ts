@@ -14,6 +14,8 @@ export async function getPublicMain() {
         
         const collectionName = staticStore?.firebase?.firestore?.collections?.public;
         const documentName = staticStore?.firebase?.firestore?.documents?.main;
+
+        console.log(collectionName, documentName);
         
         if (!collectionName || !documentName) {
             throw new Error(errorMessages.firestore.configNotSet);

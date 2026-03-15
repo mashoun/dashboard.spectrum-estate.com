@@ -25,4 +25,4 @@ logs
 
 #firebase
 firebase-emulator-data
-firebase.rules
+firestore.rules
