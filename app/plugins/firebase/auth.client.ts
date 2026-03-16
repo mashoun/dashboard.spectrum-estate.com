@@ -4,6 +4,7 @@ import type { Auth } from "firebase/auth";
 // Importing Firebase Modules
 import { getAuth, onAuthStateChanged, connectAuthEmulator } from "firebase/auth";
 import { getFirebaseApp } from "~/utils/firebase/app";
+import { checkEmulatorStatus } from "~/utils/firebase/emulator";
 
 export default defineNuxtPlugin(() => {
   const app = getFirebaseApp();
@@ -12,7 +13,7 @@ export default defineNuxtPlugin(() => {
 
   if (auth) authStore.setReady(true);
 
-  if (import.meta.dev) {
+  if (checkEmulatorStatus()) {
     connectAuthEmulator(auth,'http://127.0.0.1:9099');
   }
 

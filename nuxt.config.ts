@@ -20,6 +20,9 @@ export default defineNuxtConfig({
       firebaseUser: {
         email: '',
         password: ''
+      },
+      firebaseEmulator: {
+        isActive: 'false',
       }
     }
   },
