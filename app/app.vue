@@ -37,8 +37,10 @@ const authStore = useAuth();
 const config = useRuntimeConfig()
 
 const show = ref(false);
-const password = ref(config.public.firebaseUser.password);
-const email = ref(config.public.firebaseUser.email);
+// const password = ref(config.public.firebaseUser.password);
+// const email = ref(config.public.firebaseUser.email);
+const password = ref('admin1');
+const email = ref('admin1@test.com');
 
 function postPublicMain() {
   writePublicMain({ bio: 'Test bio-' + Math.random().toString(16).slice(2) })

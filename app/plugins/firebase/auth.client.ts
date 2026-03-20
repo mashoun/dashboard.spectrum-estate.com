@@ -14,7 +14,7 @@ export default defineNuxtPlugin(() => {
   if (auth) authStore.setReady(true);
 
   if (checkEmulatorStatus()) {
-    connectAuthEmulator(auth,'http://127.0.0.1:9099');
+    connectAuthEmulator(auth, 'http://127.0.0.1:9099');
   }
 
   onAuthStateChanged(auth, (user) => {
@@ -22,6 +22,9 @@ export default defineNuxtPlugin(() => {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/auth.user
       authStore.setUser(user);
+      user.getIdToken(true).then((token) => {
+        console.log('token refreshed');
+      });
     } else {
       // User is signed out
       authStore.setUser(null);
