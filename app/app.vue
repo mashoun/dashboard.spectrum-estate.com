@@ -14,8 +14,8 @@
           </template>
         </UInput>
         <div class="flex gap-3">
-          <UButton variant="ghost" @click="signOutUser">Logout</UButton>
-          <UButton class="w-fit" @click="loginUser(email, password)">Login</UButton>
+          <UButton variant="ghost" @click="handleLogout">Logout</UButton>
+          <UButton class="w-fit" :loading="authStore.loading" @click="handleLogin">Login</UButton>
         </div>
       </div>
       <hr class="my-4">
@@ -41,6 +41,26 @@ const show = ref(false);
 // const email = ref(config.public.firebaseUser.email);
 const password = ref('admin1');
 const email = ref('admin1@test.com');
+
+async function handleLogin() {
+  authStore.setLoading(true);
+  try {
+    await loginUser(email.value, password.value);
+  } catch (error) {
+    console.log(error);
+    authStore.setLoading(false);
+  }
+}
+
+async function handleLogout() {
+  authStore.setLoading(true);
+  try {
+    await signOutUser();
+  } catch (error) {
+    console.log(error);
+    authStore.setLoading(false);
+  }
+}
 
 function postPublicMain() {
   writePublicMain({ bio: 'Test bio-' + Math.random().toString(16).slice(2) })
