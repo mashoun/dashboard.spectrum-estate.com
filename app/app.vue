@@ -15,13 +15,14 @@
         </UInput>
         <div class="flex gap-3">
           <UButton variant="ghost" @click="handleLogout">Logout</UButton>
-          <UButton class="w-fit" :loading="authStore.loading" @click="handleLogin">Login</UButton>
+          <UButton class="w-fit" @click="handleLogin">Login</UButton>
         </div>
       </div>
       <hr class="my-4">
       <div class="flex gap-4">
         <UButton @click="getPublicMain()">Get Public / main {}</UButton>
         <UButton @click="postPublicMain()">Post Public / main </UButton>
+        <UButton @click="throwDemoError">Throw Demo Error</UButton>
       </div>
     </UContainer>
   </UApp>
@@ -64,6 +65,10 @@ async function handleLogout() {
 
 function postPublicMain() {
   writePublicMain({ bio: 'Test bio-' + Math.random().toString(16).slice(2) })
+}
+
+function throwDemoError() {
+  throw new Error('This is a demo error - ' + Math.random().toString(16).slice(2));
 }
 
 

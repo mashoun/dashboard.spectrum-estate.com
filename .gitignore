@@ -26,3 +26,5 @@ logs
 #firebase
 firebase-emulator-data
 firestore.rules
+# Sentry Config File
+.env.sentry-build-plugin
