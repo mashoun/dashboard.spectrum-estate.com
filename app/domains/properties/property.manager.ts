@@ -1,13 +1,5 @@
-/*
-“How does my app USE properties?”
-
-This is your brain layer
-Combines API + Mapper
-Used by UI
-*/
-
 import { ref } from 'vue'
-import type { Property } from './property.model'
+import type { Property } from '~/types/property.types'
 
 import {
     getAllProperties,
